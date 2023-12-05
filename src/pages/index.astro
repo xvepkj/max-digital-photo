@@ -31,7 +31,7 @@ import Footer from "../components/Footer.astro";
     </div>
   
     <!-- Container for Content and Map -->
-    <div class="container">
+    <div class="container-home">
       <!-- Left Section: Contact Information -->
       <div class="contact-info">
         <h2 class="mb-4">Contact Us</h2>
@@ -74,11 +74,11 @@ import Footer from "../components/Footer.astro";
     </script>
     <style>
       /* Styling for both larger screens (computers) and smaller screens (mobile) */
-      .container {
+      .container-home {
         display: flex;
         flex-direction: column; /* Change to column layout for mobile */
         align-items: center;
-        padding: 50px 20px; /* Adjusted padding for the container */
+        padding: 50px; /* Adjusted padding for the container */
         margin: 20px; /* Same margin on left and right */
       }
   
@@ -105,10 +105,16 @@ import Footer from "../components/Footer.astro";
         object-fit: cover; /* Make sure the image covers the entire carousel */
         max-height: 600px; /* Set the max-height as needed */
       }
+
+      .carousel-item img {
+        width: auto;
+        height: 200px;
+        max-height: 200px;
+      }
   
       /* Media query for larger screens (adjust the max-width as needed) */
       @media (min-width: 768px) {
-        .container {
+        .container-home {
           flex-direction: row; /* Change back to row layout for larger screens */
           justify-content: space-around;
         }
@@ -119,6 +125,12 @@ import Footer from "../components/Footer.astro";
   
         .map-container {
           width: 70%; /* Adjust width for larger screens */
+        }
+
+        .carousel-item img {
+          width: auto;
+          height: 400px;
+          max-height: 400px;
         }
       }
     </style>
