@@ -1,0 +1,135 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from '../components/Navbar.astro';
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Home">
+    <Navbar/>
+    <!-- Carousel Section -->
+    <div id="carouselExample" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <!-- Assuming you have three images named image_1.jpg, image_2.jpg, and image_3.jpg -->
+        <div class="carousel-item active">
+          <img src="/image_1.jpg" class="d-block w-100 h-100 carousel-image" alt="Image 1">
+        </div>
+        <div class="carousel-item">
+          <img src="/image_2.jpg" class="d-block w-100 h-100 carousel-image" alt="Image 2">
+        </div>
+        <div class="carousel-item">
+          <img src="/image_3.jpg" class="d-block w-100 h-100 carousel-image" alt="Image 3">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  
+    <!-- Container for Content and Map -->
+    <div class="container">
+      <!-- Left Section: Contact Information -->
+      <div class="contact-info">
+        <h2 class="mb-4">Contact Us</h2>
+        <p class="mb-4">
+          <strong>
+            <i class="bi bi-phone-fill"></i> Phone:
+          </strong> 9891274827
+        </p>
+        <p>
+          <strong>
+            <i class="bi bi-house-door-fill"></i> Address:
+          </strong> 101/15, Mayur Vihar Phase I, Pratap Nagar, Mayur Vihar, New Delhi, Delhi, 110091
+        </p>
+      </div>
+  
+      <!-- Right Section: Leaflet Map -->
+      <div id="map" class="map-container"></div>
+    </div>
+  
+    <Footer/>
+  
+    <!-- Script to initialize Leaflet map -->
+    <script type="module">
+        import 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+      
+        document.addEventListener('DOMContentLoaded', () => {
+          const map = L.map('map').setView([28.6044438, 77.2934435], 17);
+      
+          L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          }).addTo(map);
+      
+          // Create a marker with a popup
+          const marker = L.marker([28.6044438, 77.2934435])
+            .addTo(map)
+            .bindPopup(
+              `<p><a href="https://maps.app.goo.gl/ZFTap68kLEicRz7XA" target="_blank">Open in Google Maps</a></p>`
+            );
+      
+          // Open the popup by default
+          marker.openPopup();
+        });
+    </script>
+  
+    <style>
+      /* Styling for both larger screens (computers) and smaller screens (mobile) */
+      .container {
+        display: flex;
+        flex-direction: column; /* Change to column layout for mobile */
+        align-items: center;
+        padding: 50px 20px; /* Adjusted padding for the container */
+        margin: 20px; /* Same margin on left and right */
+      }
+  
+      .contact-info {
+        width: 100%; /* Take full width on mobile */
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px; /* Add margin between contact info and map on mobile */
+      }
+  
+      .map-container {
+        height: 400px;
+        width: 100%; /* Take full width on mobile */
+      }
+  
+      /* Styling for the carousel */
+      .carousel {
+        max-width: 1000px; /* Adjust the max-width as needed */
+        margin: 20px auto; /* Center the carousel on the page */
+      }
+  
+      .carousel-image {
+        height: 400px; /* Adjust the height as needed */
+        overflow: hidden;
+      }
+
+      .carousel-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+  
+      /* Media query for larger screens (adjust the max-width as needed) */
+      @media (min-width: 768px) {
+        .container {
+          flex-direction: row; /* Change back to row layout for larger screens */
+          justify-content: space-around;
+        }
+  
+        .contact-info {
+          width: 30%; /* Adjust width for larger screens */
+        }
+  
+        .map-container {
+          width: 70%; /* Adjust width for larger screens */
+        }
+      }
+    </style>
+</Layout>

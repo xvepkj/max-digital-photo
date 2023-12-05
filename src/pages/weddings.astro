@@ -1,0 +1,36 @@
+---
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
+import SixImageCard from "../components/SixImageCard.astro";
+import ThreeImageCard from "../components/ThreeImageCard.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Weddings">
+  <Navbar />
+  <SixImageCard
+    couple="Sushant & Me"
+    image1="/image_1.jpg"
+    image2="/image_2.jpg"
+    image3="/image_3.jpg"
+    image4="/image_1.jpg"
+    image5="/image_2.jpg"
+    image6="/image_3.jpg"
+  />
+  <SixImageCard
+    couple="Sushant & Rahul"
+    image1="/image_1.jpg"
+    image2="/image_2.jpg"
+    image3="/image_3.jpg"
+    image4="/image_1.jpg"
+    image5="/image_2.jpg"
+    image6="/image_3.jpg"
+  />
+  <ThreeImageCard
+    couple="Sushant & Akshit"
+    image1="/image_1.jpg"
+    image2="/image_2.jpg"
+    image3="/image_3.jpg"
+  />
+  <Footer />
+</Layout>
